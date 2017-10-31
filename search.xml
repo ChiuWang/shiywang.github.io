@@ -1,64 +1,11 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <meta charset="utf-8">
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
   
-  <title>Kubernetes 架构 Overview | Shiyang Wang</title>
-  <meta name="author" content="Shiyang Wang">
-  
-  <meta name="description" content="Master/Node 架构Master相当于中心控制集群其中Master中的APIServer和etcd交流，Node相当于工作集群用来和docker daemon/runc 打交道实际操作管理容器，这里需要注意的是etcd是一个分布式的KV存储系统,支持WATCH接口,通过http long p">
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  <meta property="og:title" content="Kubernetes 架构 Overview"/>
-  <meta property="og:site_name" content="Shiyang Wang"/>
-
-  
-    <meta property="og:image" content=""/>
-  
-
-  
-    <link rel="alternative" href="/atom.xml" title="Shiyang Wang" type="application/atom+xml">
-  
-  
-    <link href="/favicon.png" rel="icon">
-  
-  
-  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">  
-  <link rel="stylesheet" href="/css/sidenav.css" media="screen" type="text/css">  
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
-  <script src="/js/jquery-2.0.3.min.js"></script>
-
-  <!-- analytics -->
-  
-
-</head>
-
-<body id="body" data-spy="scroll" data-target=".toc">
-  <div class="container" id="container">
-	<div class="content">
-	  <div class="page-header">		
-  <h1><a class="brand" href="/">Shiyang Wang</a><span class="split"></span><span class="title">Kubernetes 架构 Overview</span><span class="date" id="title-date"><i class="fa fa-clock-o"></i> 2017-09-01</span></h1>
-</div>		
-
-<div class="row page">
-  <!-- cols -->	
-  
-  
-
-  
-	<div class="col-md-12">
-	  
-
-	  <!-- content -->
-	  <p><img src="overview.png" alt=""></p>
+    
+    <entry>
+      <title><![CDATA[Kubernetes 架构 Overview]]></title>
+      <url>/2017/09/01/kubernetes1/</url>
+      <content type="html"><![CDATA[<p><img src="overview.png" alt=""></p>
 <h4 id="Master-Node-架构"><a href="#Master-Node-架构" class="headerlink" title="Master/Node 架构"></a>Master/Node 架构</h4><p>Master相当于中心控制集群其中Master中的APIServer和etcd交流，Node相当于工作集群用来和docker daemon/runc 打交道实际操作管理容器，这里需要注意的是etcd是一个分布式的KV存储系统,支持WATCH接口,通过http long poll实现，使用Raft算法保证数据一致性。</p>
 <h4 id="Kubernetes实际模块功能"><a href="#Kubernetes实际模块功能" class="headerlink" title="Kubernetes实际模块功能"></a>Kubernetes实际模块功能</h4><p>黄色的部分是运行在Master上的进程，绿色的部分是运行在Node上的进程,紫色的部分是以插件或者pod的形式运行。对于OpenShift,基本的架构都是复用Kubernetes，一部分不同的地方在于kubernets 有许多自己加入的<a href="https://kubernetes.io/docs/admin/admission-controllers/">Admission Controllers</a> 注意这个和第三部分的Controller不是一个概念.当然OpenShift也有一些自己的controller 比如说Build Config, Build, Deployment Config 等等这些kubernetes所没有的功能。</p>
 <h4 id="Contronller-简介"><a href="#Contronller-简介" class="headerlink" title="Contronller 简介"></a>Contronller 简介</h4><p>在Kubernets/OpenShift中Controller 是一个非常重要的概念，它的定义其实很简单，就是一个 loop, 通过和APIServer通讯获取它想要的数据，然后比对用户目前想要达成的状态，如果者两者状态不一致，就做一些同步的操作，然后将结构在写回APIServer,其实主要是etcd里，因为在Kubernetes/OpenShift中，所有的资源都是以Json的形式持久华在etcd中，而etcd只和APIServer打交道。</p>
@@ -91,85 +38,11 @@
 <p>11.Admission Controllers</p>
 <p>12.etcd 的机制</p>
 <p>13.等等</p>
-	  
-
-	  <div>
-  		<center>
-		  <div class="pagination">
-<ul class="pagination">
-	
-	
-	
-	
-	
-	
-		
-			
-			
-		
-	
-	
-	
-		<li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
-	
-	<li><a href="/"><i class="fa fa-archive"></i>Home</a></li>
-	
-		<li class="next disabled"><a>next<i class="fa fa-arrow-circle-o-right"></i></a></li>
-	
-</ul>
-</div>
-
-		</center>
-	  </div>
-	  
-	</div> <!-- col-md-9/col-md-12 -->
-	
-  </div><!-- row -->
-
-	</div>
-  </div>
-  <div class="container-narrow">
-	<footer> <p>
-  &copy; 2017 Shiyang Wang
+]]></content>
+      
+        
+    </entry>
+    
   
-      with help from <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-wixo/">Wixo</a>.    
-</p> </footer>
-  </div> <!-- container-narrow -->
   
-<a id="gotop" href="#">   
-  <span>▲</span> 
-</a>
-
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/jquery.tableofcontents.min.js"></script>
-<script src="/js/tocgenerator.min.js"></script>
-<script src="/js/main.js"></script>
-<script src="/js/search.js"></script> 
-
-
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
-
-
-
-   <script type="text/javascript">      
-     var search_path = "search.xml";
-	 if (search_path.length == 0) {
-	 	search_path = "search.xml";
-	 }
-	 var path = "/" + search_path;
-     searchFunc(path, 'local-search-input', 'local-search-result');
-   </script>
-
-
-</body>
-</html>
+</search>

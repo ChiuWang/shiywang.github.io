@@ -3,6 +3,57 @@
   
     
     <entry>
+      <title><![CDATA[2017读书清单]]></title>
+      <url>/2017/11/05/readinglist2017/</url>
+      <content type="html"><![CDATA[<h2 id="2017读书清单"><a href="#2017读书清单" class="headerlink" title="2017读书清单"></a>2017读书清单</h2><ol>
+<li>迷人的材料</li>
+<li>Kubernetes权威指南</li>
+<li>Docker容器与容器云</li>
+<li>人类简史</li>
+<li>Go语言编程</li>
+<li>财富自由之路</li>
+<li>智能时代</li>
+<li>Twenty Thousand Leagues Under the Sea (还未看完)</li>
+<li>Originals: How Non-Conformists Move the World</li>
+<li>Go程序设计语言(大概看了一下)</li>
+</ol>
+<p>还有一些零星的书和Paper没有列出来。还有两篇想读的Paper还没有看完，sad</p>
+<ol>
+<li>bitcoin a peer-to-peer electronic cash system</li>
+<li>MapReduce: Simplified Data Processing on Large Clusters</li>
+</ol>
+<p>很惭愧，因为今年重心全放在了工作，社区工作和GRE单词上,并没有读多少书….</p>
+<p>不过今年估计最少又掌握了一些新单词(整理出了一个整本单词本),相比去年拙劣的考分，如果明年年初再考一次估计Verbal会有长远进步…</p>
+<p>另外今年还听了一些书评，这里也顺便列出来，以后有空把这些原版给读了(优先级并不高)</p>
+<ol>
+<li>Homo Deus: A Brief History of Tomorro </li>
+<li>Trying not to try: The Art and Science of Spontaneity</li>
+<li>Messy: The Power of Disorder to Transform Our Lives</li>
+<li>Algorithms to Live By: The computer Science of Human Decisions</li>
+<li>Success and Luck: Good Fortune and the Myth of Meritocracy</li>
+<li>The End of Average: How We Succeed in a World That Values Sameness</li>
+<li>The Attention Merchants: The Epic Scramble to Get Inside Our Heads</li>
+<li>Hit Makers: How Things Become Popular</li>
+<li>Stretch: Unlock the Power of Less- and Achieve More That You Ever Imagined</li>
+<li>The Complacent Class: The Self-Defeating Quest fro the American Dream</li>
+<li>Tools of Titans: The Tactics, Routines, and Habits of Billionaires, Icons, and World-Class Performers</li>
+<li>Sensemaking: The Power of the Humanities in the Age of the Algorithm</li>
+<li>Decisive: How to make better choices in life and work</li>
+<li>Option B: Facing Adversity, Building Resilience, and Finding Joy (Sheryl SandBerg)</li>
+<li>Everybody Lies: Big Data, New Data, and What the Internet Can Tell Us About Who We Really Are</li>
+<li>Barking Up the Wrong Tree: The surprising Science Behind Why Everything You Know About Success Is Wrong</li>
+<li>Astrophysics for People in a Hurry</li>
+<li>Stealing Fire: How Silicon Valley, the Navy SEALs, and Maverick Scientists Are Revolutionzing the Way We live and Work</li>
+<li>The Telomere Effect: A Rveolutionary Approach to Living Younger, Healthier, Longer (重点)</li>
+<li>Popular: The Power of Likability in a Status- Obsessed World</li>
+<li>Peak Performance: Elevate Your Game, Avoid Burnout, and Thrive with the New Science of Success (重点,感受颇深)</li>
+</ol>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[《Go语言编程》读书笔记]]></title>
       <url>/2017/11/04/golang1/</url>
       <content type="html"><![CDATA[<h2 id="《Go语言编程》读书笔记"><a href="#《Go语言编程》读书笔记" class="headerlink" title="《Go语言编程》读书笔记"></a>《Go语言编程》读书笔记</h2><h2 id="顺序编程"><a href="#顺序编程" class="headerlink" title="顺序编程"></a>顺序编程</h2><h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>同是静态类型语言的Go作用域和C语言类似，虽然变量在栈上(stack)还是堆上(heap)是由编译器决定，这点和C语言用户自己决定不一样，但是作用于访问还是类似的，比如如下代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">func f() &#123;</div><div class="line">	n := 999;</div><div class="line">	...</div><div class="line">&#125;</div><div class="line"></div><div class="line">fmt.Println(n) //这里是不能访问一个函数内的变量的</div></pre></td></tr></table></figure></p>
@@ -11,6 +62,12 @@
 <h2 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h2><h2 id="类型系统"><a href="#类型系统" class="headerlink" title="类型系统"></a>类型系统</h2><p>类型系统里比较重要的两个概念<code>Pass By Reference</code>和 <code>Pass By Value</code>。<br>在C语言里处理数组在函数传递的时候比较特别是<code>Pass By Reference</code>,其他对象都是<code>Pass By Value</code> 结构体里的数组也不例外，在C语言中如下是等价的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">如果函数是test(a), a 是一个数组</div><div class="line">void test(int * p) &#123;</div><div class="line">    *(p+1) = 1;</div><div class="line">&#125; </div><div class="line"></div><div class="line">void test(int p[]) &#123;</div><div class="line">    p[1] = 1;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>然后Go语言这点不太一样数组是<code>Pass By Reference</code>的。然后Go语言引入了一种叫做切片(Slice)的类型,这个有点像C的数组，切片和数组看起来十分形似，唯一的区别实在声明的时候：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//That is a slice:</div><div class="line">var av = []int&#123;1,5,2,3,7&#125;</div><div class="line"></div><div class="line">//And those are arrays:</div><div class="line">var av = [...]int&#123;1,5,2,3,7&#125;</div><div class="line">var bv = [5]int&#123;1,5,2,3,7&#125;</div></pre></td></tr></table></figure></p>
 <p>另外数组可以转换成切片通过这个方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sli := arr[:]</div></pre></td></tr></table></figure></p>
+<h4 id="Go语言有四种特殊的类型通常是看作Pass-by-Reference的"><a href="#Go语言有四种特殊的类型通常是看作Pass-by-Reference的" class="headerlink" title="Go语言有四种特殊的类型通常是看作Pass by Reference的"></a>Go语言有四种特殊的类型通常是看作<code>Pass by Reference</code>的</h4><ol>
+<li>切片(Slice)</li>
+<li>接口(Interface)</li>
+<li>Map</li>
+<li>Channel</li>
+</ol>
 <h2 id="结构体部分"><a href="#结构体部分" class="headerlink" title="结构体部分"></a>结构体部分</h2><p>匿名引用指针和值引用的区别</p>
 <p>C++的虚基类引出区别,首先讲一下虚基类</p>
 <p><img src="virtualbase.jpg" alt=""></p>

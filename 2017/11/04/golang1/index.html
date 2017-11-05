@@ -64,6 +64,12 @@
 <h2 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h2><h2 id="类型系统"><a href="#类型系统" class="headerlink" title="类型系统"></a>类型系统</h2><p>类型系统里比较重要的两个概念<code>Pass By Reference</code>和 <code>Pass By Value</code>。<br>在C语言里处理数组在函数传递的时候比较特别是<code>Pass By Reference</code>,其他对象都是<code>Pass By Value</code> 结构体里的数组也不例外，在C语言中如下是等价的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">如果函数是test(a), a 是一个数组</div><div class="line">void test(int * p) &#123;</div><div class="line">    *(p+1) = 1;</div><div class="line">&#125; </div><div class="line"></div><div class="line">void test(int p[]) &#123;</div><div class="line">    p[1] = 1;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>然后Go语言这点不太一样数组是<code>Pass By Reference</code>的。然后Go语言引入了一种叫做切片(Slice)的类型,这个有点像C的数组，切片和数组看起来十分形似，唯一的区别实在声明的时候：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//That is a slice:</div><div class="line">var av = []int&#123;1,5,2,3,7&#125;</div><div class="line"></div><div class="line">//And those are arrays:</div><div class="line">var av = [...]int&#123;1,5,2,3,7&#125;</div><div class="line">var bv = [5]int&#123;1,5,2,3,7&#125;</div></pre></td></tr></table></figure></p>
 <p>另外数组可以转换成切片通过这个方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sli := arr[:]</div></pre></td></tr></table></figure></p>
+<h4 id="Go语言有四种特殊的类型通常是看作Pass-by-Reference的"><a href="#Go语言有四种特殊的类型通常是看作Pass-by-Reference的" class="headerlink" title="Go语言有四种特殊的类型通常是看作Pass by Reference的"></a>Go语言有四种特殊的类型通常是看作<code>Pass by Reference</code>的</h4><ol>
+<li>切片(Slice)</li>
+<li>接口(Interface)</li>
+<li>Map</li>
+<li>Channel</li>
+</ol>
 <h2 id="结构体部分"><a href="#结构体部分" class="headerlink" title="结构体部分"></a>结构体部分</h2><p>匿名引用指针和值引用的区别</p>
 <p>C++的虚基类引出区别,首先讲一下虚基类</p>
 <p><img src="virtualbase.jpg" alt=""></p>
@@ -99,6 +105,10 @@
 	
 		
 			
+		
+	
+		
+			
 			
 		
 	
@@ -108,7 +118,7 @@
 			
 	
 	
-		<li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
+		<li class="prev"><a href="/2017/11/05/readinglist2017/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
 	
 	<li><a href="/"><i class="fa fa-archive"></i>Home</a></li>
 	
